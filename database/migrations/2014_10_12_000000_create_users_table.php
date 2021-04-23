@@ -11,6 +11,7 @@ class CreateUsersTable extends Migration
      *
      * @return void
      */
+    
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
@@ -21,9 +22,10 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->string('vendor_role');
-            $table->unsignedBigInteger('vendor_id');
-            $table->foreign('vendor_id')->references('id')->on('vendors')->onDelete('cascade'); 
+            $table->string('phone')->nullable();
+            $table->string('broker_name')->nullable();
+            $table->string('broker_slug')->nullable();
+            $table->string('member')->nullable();
     
         });
     }

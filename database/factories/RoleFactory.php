@@ -23,6 +23,11 @@ class RoleFactory extends Factory
     {
        
 
+        $superadmin = Role::create([
+            'name'=> 'super-admin'
+        ]);
+
+
         $admin = Role::create([
             'name'=> 'admin'
         ]);

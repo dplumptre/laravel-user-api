@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DataController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +31,21 @@ Route::middleware(['api'])->prefix('auth')->group(function () {
     Route::post('refresh', [AuthController::class,'refresh']);
     Route::get('user-profile', [AuthController::class,'userProfile']);
     Route::post('change-password/{user}', [AuthController::class,'changePassword'])->middleware('jwt.auth');
+
+    
 });
 
+Route::get('users', [DataController::class,'getUser']);
+Route::post('add-user', [DataController::class,'addUser']);
 
+
+
+
+Route::post('add-account', [AccountController::class,'addAccount']);
+
+Route::get('get-accounts', [AccountController::class,'getAccount']);
+
+Route::post('get-status-by-post', [AccountController::class,'getStatusByPost']);
 
 Route::middleware(['jwt.auth','api'])->group(function () {
     // api/

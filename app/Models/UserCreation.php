@@ -5,7 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Vendor extends Model
+class UserCreation extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
+    protected  $table = 'user_creation';
+
 }
