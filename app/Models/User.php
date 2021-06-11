@@ -64,21 +64,28 @@ class User extends Authenticatable implements JWTSubject
     }
 
 
-     
-    public function hasRole($slug){
-        if($this->roles()->where('name',$slug)->first()){
-        return true;
-        }
-        return false;
-    }
 
-
-
-
-    public function roles()
+    public function comments()
     {
-      return   $this->belongsToMany('App\Models\Role','user_roles','user_id','role_id');
+        return $this->hasMany('App\Comment','user_id');
     }
+
+
+     
+    // public function hasRole($slug){
+    //     if($this->roles()->where('name',$slug)->first()){
+    //     return true;
+    //     }
+    //     return false;
+    // }
+
+
+
+
+    // public function roles()
+    // {
+    //   return   $this->belongsToMany('App\Models\Role','user_roles','user_id','role_id');
+    // }
 
 
 }

@@ -23,31 +23,40 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 
-Route::middleware(['api'])->prefix('auth')->group(function () {
-    // api/auth
-    Route::post('login', [AuthController::class,'login']);
-    Route::post('register', [AuthController::class,'register']);
-    Route::post('logout', [AuthController::class,'logout']);
-    Route::post('refresh', [AuthController::class,'refresh']);
-    Route::get('user-profile', [AuthController::class,'userProfile']);
-    Route::post('change-password/{user}', [AuthController::class,'changePassword'])->middleware('jwt.auth');
 
-    
-});
 
+// interview
+
+/** 
+ *    LARAVEL API PART
+ *    MY END POINTS : Remember to add /api/ if you want to test on postman Change the domain part to yours
+ *    http://ohapi.local/api/users 
+ *    http://ohapi.local/api/add-user
+ *    http://ohapi.local/api/delete-user/number
+ *    http://ohapi.local/api/update-user/number
+ *    http://ohapi.local/api/users
+ *    http://ohapi.local/api/add-comment
+ * 
+ *    php artisan migrate:fresh --seed
+ * 
+ * 
+ *      REACT PART
+ *      navigate to src-> Axios -> axiosInstance  to set uyour base url to match the end point above
+ *      mine is http://ohapi.local/api
+ * 
+ * 
+ */
+
+
+
+
+//users
 Route::get('users', [DataController::class,'getUser']);
+Route::get('user/{user}', [DataController::class,'getAUser']);
 Route::post('add-user', [DataController::class,'addUser']);
+Route::put('update-user/{user}', [DataController::class,'UpdateUser']);
+Route::get('delete-user/{user}', [DataController::class,'deleteUser']);
 
-
-
-
-Route::post('add-account', [AccountController::class,'addAccount']);
-
-Route::get('get-accounts', [AccountController::class,'getAccount']);
-
-Route::post('get-status-by-post', [AccountController::class,'getStatusByPost']);
-
-Route::middleware(['jwt.auth','api'])->group(function () {
-    // api/
-  //  Route::get('products', [ProductController::class,'getProducts']);
-});
+//comments
+Route::get('comments', [DataController::class,'getComments']);
+Route::post('add-comment', [DataController::class,'addComment']);

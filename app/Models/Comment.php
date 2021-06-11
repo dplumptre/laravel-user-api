@@ -5,11 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserCreation extends Model
+class Comment extends Model
 {
     use HasFactory;
-
     protected $guarded = ['id'];
-    protected  $table = 'user_creation';
+    protected  $table = 'comments';
+
+
+    public function user()
+    {
+        return $this->belongsTo('App\User','user_id');
+    }
+
 
 }
