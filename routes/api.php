@@ -27,28 +27,31 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // interview
 
-/** 
+/**
  *    LARAVEL API PART
  *    MY END POINTS : Remember to add /api/ if you want to test on postman Change the domain part to yours
- *    http://ohapi.local/api/users 
+ *    http://ohapi.local/api/users
  *    http://ohapi.local/api/add-user
  *    http://ohapi.local/api/delete-user/number
  *    http://ohapi.local/api/update-user/number
  *    http://ohapi.local/api/users
  *    http://ohapi.local/api/add-comment
- * 
+ *
  *    php artisan migrate:fresh --seed
- * 
- * 
+ *
+ *
  *      REACT PART
  *      navigate to src-> Axios -> axiosInstance  to set uyour base url to match the end point above
  *      mine is http://ohapi.local/api
- * 
- * 
+ *
+ *
  */
 
 
 
+Route::get('/', function (){
+    return "Hello World";
+});
 
 //users
 Route::get('users', [DataController::class,'getUser']);

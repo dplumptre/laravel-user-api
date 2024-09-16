@@ -15,8 +15,13 @@ class DataController extends Controller
 
 
 
-    public function getUser() {
-        $data = User::orderBy('id','Desc')->get();
+    public function getUser(Request $request) {
+        $query = User::orderBy('id','Desc');
+
+        if ($request->has('email') && !empty($request->input('email'))) {
+            $query->where('email', $request->input('email'));
+        }
+        $data=$query->get();
         return response()->json(['result' => $data ]);
     }
 
