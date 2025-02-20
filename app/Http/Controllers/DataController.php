@@ -12,17 +12,23 @@ use Illuminate\Support\Facades\Hash;
 class DataController extends Controller
 {
 
-
-
-
     public function getUser(Request $request) {
-        $query = User::orderBy('id','Desc');
 
-        if ($request->has('email') && !empty($request->input('email'))) {
-            $query->where('email', $request->input('email'));
-        }
-        $data=$query->get();
-        return response()->json(['result' => $data ]);
+        $user = User::all();
+        return response()->json(['result' => $user]);
+
+
+
+
+
+
+//        $query = User::orderBy('id','Desc');
+//
+//        if ($request->has('email') && !empty($request->input('email'))) {
+//            $query->where('email', $request->input('email'));
+//        }
+//        $data=$query->get();
+//        return response()->json(['result' => $data ]);
     }
 
     public function getAUser(User $user) {

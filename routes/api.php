@@ -53,6 +53,11 @@ Route::get('/', function (){
     return "Hello World";
 });
 
+
+Route::get('/v1/health-check', function (){
+    return "Im ok now";
+});
+
 //users
 Route::get('users', [DataController::class,'getUser']);
 Route::get('user/{user}', [DataController::class,'getAUser']);
