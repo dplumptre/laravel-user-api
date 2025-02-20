@@ -1,4 +1,4 @@
-version: '3'
+# version: '3'. its obsolete
 services:
   app:
     build:
@@ -7,6 +7,7 @@ services:
         uid: 1000
       context: .
       dockerfile: dockerfiles/Dockerfile
+    platform: linux/amd64
     restart: unless-stopped
     working_dir: /var/www
     volumes:
